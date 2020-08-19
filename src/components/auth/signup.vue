@@ -1,6 +1,105 @@
 <template>
-  <div id="signup">
-    <div class="signup-form">
+    <section id="contact" class="parallax-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-3 col-md-6 col-sm-12">
+                    <div class="section-title">
+                        <h1>Join us and show your art to the world</h1>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="col-md-offset-2 col-md-8 col-sm-12">
+                    <!-- CONTACT FORM HERE -->
+                    <form id="contact-form" @submit.prevent="onSubmit">
+
+                        <!-- IF MAIL SENT SUCCESSFULLY -->
+                        <h6 class="text-success">Your message has been sent successfully. </h6>
+
+                        <!-- IF MAIL SENDING UNSUCCESSFULL -->
+                        <h6 class="text-danger">E-mail must be valid and message must be longer than 1 character.</h6>
+                        <!--Name-->
+                        <div class="col-md-6 col-sm-6">
+                            <input type="text" class="form-control" id="cf-name" name="cf-name" placeholder="Name" v-model="name">
+                        </div>
+
+                        <!--Email-->
+                        <div class="col-md-6 col-sm-6">
+                            <input type="email" class="form-control" id="cf-email" name="cf-email" placeholder="Email Address" v-model="email">
+                        </div>
+                        <!--Spesialty-->
+                        <div class="col-md-6 col-sm-6">
+                            <input type="text" class="form-control" id="cf-spesilty" placeholder="Your specialty" v-model="specialty">
+                        </div>
+                        <!--country-->
+                        <div class="col-md-6 col-sm-6">
+                            <input type="text" class="form-control" id="cf-country" placeholder="Country" v-model="country">
+                        </div>
+                        <!--Braif-->
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject">
+                            <textarea class="form-control" rows="5" id="cf-message" name="cf-message" placeholder="Give us brief statement about you" v-model="BriefStatement"></textarea>
+                        </div>
+                        <!--upload-->
+                        <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+                            <div class="section-btn">
+                                <button type="submit" class="form-control" id="cf-submit" name="submit"><span data-hover="Send Message">Submit</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <!--  <form  @submit.prevent="onSubmit">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" v-model="email" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Specialty</label>
+    <select class="form-control" id="specialty" v-model="specialty">
+      <option>Landscape</option>
+      <option>Portrait</option>
+      <option>Wildlife</option>
+      <option>Sports</option>
+      <option>Architectural</option>
+    </select>
+  </div>
+  <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" v-model="country">
+            <option value="usa">Saudi Arabia</option>
+            <option value="india">USA</option>
+            <option value="uk">UK</option>
+            <option value="germany">Germany</option>
+          </select>
+        </div>
+  <div class="form-group">
+    <label for="BrieStatement">Give us brief statement about you</label>
+    <textarea class="form-control" id="BriefStatement" rows="3" v-model="BriefStatement" ></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="images">Upload best images you have!</label>
+    <input type="file" class="form-control-file" id="image">
+  </div>
+     <div class="input inline">
+          <input type="checkbox" id="terms" v-model="terms">
+          <label for="terms">Accept Terms of Use</label>
+        </div>
+        <div class="submit">
+          <button type="submit">Submit</button>
+        </div>
+</form>
+    -->
+        <!--<div class="signup-form">
       <form @submit.prevent="onSubmit">
         <div class="input">
           <label for="email">Mail</label>
@@ -10,9 +109,9 @@
                   v-model="email">
         </div>
         <div class="input">
-          <label for="age">Your Age</label>
+          <label for="age">Your profosional</label>
           <input
-                  type="number"
+                  type="text"
                   id="age"
                   v-model.number="age">
         </div>
@@ -39,23 +138,7 @@
             <option value="germany">Germany</option>
           </select>
         </div>
-        <div class="hobbies">
-          <h3>Add some Hobbies</h3>
-          <button @click="onAddHobby" type="button">Add Hobby</button>
-          <div class="hobby-list">
-            <div
-                    class="input"
-                    v-for="(hobbyInput, index) in hobbyInputs"
-                    :key="hobbyInput.id">
-              <label :for="hobbyInput.id">Hobby #{{ index }}</label>
-              <input
-                      type="text"
-                      :id="hobbyInput.id"
-                      v-model="hobbyInput.value">
-              <button @click="onDeleteHobby(hobbyInput.id)" type="button">X</button>
-            </div>
-          </div>
-        </div>
+     
         <div class="input inline">
           <input type="checkbox" id="terms" v-model="terms">
           <label for="terms">Accept Terms of Use</label>
@@ -64,139 +147,43 @@
           <button type="submit">Submit</button>
         </div>
       </form>
-    </div>
-  </div>
+    </div>-->
+
+
+    </section>
 </template>
 
 <script>
+    import axios from "axios"
+    export default {
+        data() {
+            return {
+                name: '',
+                email: '',
+                specialty: '',
+                country: '',
+                BriefStatement: '',
 
-  export default {
-    data () {
-      return {
-        email: '',
-        age: null,
-        password: '',
-        confirmPassword: '',
-        country: 'usa',
-        hobbyInputs: [],
-        terms: false
-      }
-    },
-    methods: {
-      onAddHobby () {
-        const newHobby = {
-          id: Math.random() * Math.random() * 1000,
-          value: ''
+            }
+        },
+        methods: {
+
+
+            onSubmit() {
+                const formData = {
+                    email: this.email,
+                    specialty: this.specialty,
+                    name: this.name,
+                    BriefStatement: this.BriefStatement,
+                    country: this.country,
+                }
+                console.log(formData)
+                axios.post('https://photographs-8aa73.firebaseio.com/user.json', formData)
+                    .then(res => console.log(res))
+                    .catch(error => console.log(error))
+                /*  this.$store.dispatch('sginUp',formData)*/
+            }
         }
-        this.hobbyInputs.push(newHobby)
-      },
-      onDeleteHobby (id) {
-        this.hobbyInputs = this.hobbyInputs.filter(hobby => hobby.id !== id)
-      },
-      onSubmit () {
-        const formData = {
-          email: this.email,
-          age: this.age,
-          password: this.password,
-          confirmPassword: this.confirmPassword,
-          country: this.country,
-          hobbies: this.hobbyInputs.map(hobby => hobby.value),
-          terms: this.terms
-        }
-        console.log(formData)
-       /* axios.post('/accounts:signInWithCustomToken?key=AIzaSyB5sTKrH-sgc97fb-ZpDhFFRFIREjruqr0', {email:this.email,password:this.password,returnSecureToken:true})
-          .then(res => console.log(res))
-          .catch(error => console.log(error))*/
-                  this.$store.dispatch('sginUp',formData)
-      }
     }
-  }
+
 </script>
-
-<style scoped>
-  .signup-form {
-    width: 400px;
-    margin: 30px auto;
-    border: 1px solid #eee;
-    padding: 20px;
-    box-shadow: 0 2px 3px #ccc;
-  }
-
-  .input {
-    margin: 10px auto;
-  }
-
-  .input label {
-    display: block;
-    color: #4e4e4e;
-    margin-bottom: 6px;
-  }
-
-  .input.inline label {
-    display: inline;
-  }
-
-  .input input {
-    font: inherit;
-    width: 100%;
-    padding: 6px 12px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-  }
-
-  .input.inline input {
-    width: auto;
-  }
-
-  .input input:focus {
-    outline: none;
-    border: 1px solid #521751;
-    background-color: #eee;
-  }
-
-  .input select {
-    border: 1px solid #ccc;
-    font: inherit;
-  }
-
-  .hobbies button {
-    border: 1px solid #521751;
-    background: #521751;
-    color: white;
-    padding: 6px;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  .hobbies button:hover,
-  .hobbies button:active {
-    background-color: #8d4288;
-  }
-
-  .hobbies input {
-    width: 90%;
-  }
-
-  .submit button {
-    border: 1px solid #521751;
-    color: #521751;
-    padding: 10px 20px;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  .submit button:hover,
-  .submit button:active {
-    background-color: #521751;
-    color: white;
-  }
-
-  .submit button[disabled],
-  .submit button[disabled]:hover,
-  .submit button[disabled]:active {
-    border: 1px solid #ccc;
-    background-color: transparent;
-    color: #ccc;
-    cursor: not-allowed;
-  }
-</style>

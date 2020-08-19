@@ -1,49 +1,40 @@
 <template>
-  <div id="welcome">
-    <h1>Time to learn something new!</h1>
-    <p>You found the best place to learn - and now you're just one sign in (or sign up) away from it!</p>
-    <div class="cta">
-      <router-link to="/signup">Sign Up</router-link>
-      <router-link to="/signin">Sign In</router-link>
-    </div>
+  <div>
+<section id="home" class="parallax-section">
+     <div class="overlay"></div>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-10 col-sm-12">
+                    <div class="home-text">
+                         <h1>Your Website has a video background!</h1>
+                       
+                         <ul class="section-btn">
+                              <a href="#about" class="smoothScroll"><span data-hover="Discover More">Join Us Now!!</span></a>
+                         </ul>
+                    </div>
+               </div>
+
+          </div>
+     </div>
+
+     <!-- Video -->
+     <video controls autoplay loop muted>
+          <source src="videos/video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+     </video>
+</section>
+<app-photographers />
   </div>
 </template>
 
-<style scoped>
-  #welcome {
-    width: 80%;
-    margin: auto;
-  }
+<script>
+import Photographers from '../Photographers/Photographers.vue'
 
-  h1 {
-    text-align: center;
+  export default {
+    name: 'app',
+    components: {
+      'app-photographers': Photographers
+    }
   }
-
-  p {
-    text-align: center;
-  }
-
-  .cta {
-    width: 300px;
-    margin: auto;
-    text-align: center;
-  }
-
-  .cta a {
-    margin: 10px;
-    text-decoration: none;
-    display: inline-block;
-    border: 1px solid #521751;
-    border-radius: 3px;
-    width: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    color: #521751;
-  }
-
-  .cta a:hover,
-  .cta a:active {
-    background-color: #521751;
-    color: white;
-  }
-</style>
+</script>
