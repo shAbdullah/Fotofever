@@ -24,7 +24,7 @@
           Your browser does not support the video tag.
      </video>
 </section>
-<app-photographers />
+<app-photographers> </app-photographers>
   </div>
 </template>
 
