@@ -13,7 +13,7 @@
 
                 <div class="col-md-offset-2 col-md-8 col-sm-12">
                     <!-- CONTACT FORM HERE -->
-                    <form id="contact-form" @submit.prevent="onSubmit">
+                    <form id="contact-form" @submit.prevent="onUpload">
 
                         <!-- IF MAIL SENT SUCCESSFULLY -->
                         <h6 class="text-success">Your message has been sent successfully. </h6>
@@ -37,17 +37,71 @@
                         <div class="col-md-6 col-sm-6">
                             <input type="text" class="form-control" id="cf-country" placeholder="Country" v-model="country">
                         </div>
+                        <!--Phone-->
+                        <div class="col-md-6 col-sm-6">
+                            <input type="number" class="form-control" id="cf-subject" name="subject" placeholder="Phone Number" v-model="phone">
+                        </div>
+
+                        <!--YourImage-->
+                        <div class="col-md-6 col-sm-6">
+
+
+                            <!--
+                <input type="file" value="Upload Your Image" class="btn btn-lg  form-control" accept="image/*" />
+<input type="file" class="form-control custom-file-input"  accept="image/*" > 
+                      -->
+
+
+                            <label for="file-upload" class="form-control" style="height: 56px">
+                                <i class="fas fa-upload"></i>
+
+
+                                Upload your image
+                            </label>
+                            <input id="file-upload" type="file" @change="previewYourImage" accept="image/*" />
+                        </div>
                         <!--Braif-->
                         <div class="col-md-12 col-sm-12">
-                            <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject">
+
                             <textarea class="form-control" rows="5" id="cf-message" name="cf-message" placeholder="Give us brief statement about you" v-model="BriefStatement"></textarea>
+                        </div>
+                        <!--images galary-->
+                        <div class="col-md-12 col-sm-12">
+
+
+
+
+                            <label for="file-upload1" class="form-control" style="height: 56px">
+                                <i class="fas fa-upload"></i>
+
+
+                                Upload your Art
+                            </label>
+                            <input id="file-upload1" type="file" @change="previewImages" accept="image/*" multiple />
                         </div>
                         <!--upload-->
                         <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+
                             <div class="section-btn">
-                                <button type="submit" class="form-control" id="cf-submit" name="submit"><span data-hover="Send Message">Submit</span></button>
+                                <button type="submit" class="form-control" id="cf-submit" name="submit" ><span data-hover="Submit">Submit</span></button>
                             </div>
                         </div>
+
+                        <!--                     <div>
+    <div >
+      <p>Upload an image to Firebase:</p>
+      <input type="file" @change="previewImage" accept="image/*" >
+    </div>
+    <div>
+      <p>Progress: {{uploadValue.toFixed()+"%"}}
+      <progress id="progress" :value="uploadValue" max="100" ></progress>  </p>
+    </div>
+    <div v-if="imageData!=null">
+        <img class="preview" :src="picture">
+        <br>
+      <button @click="onUpload">Upload</button>
+    </div>
+  </div-->
                     </form>
                 </div>
 
@@ -57,104 +111,13 @@
 
 
 
-        <!--  <form  @submit.prevent="onSubmit">
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" v-model="email" placeholder="name@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Specialty</label>
-    <select class="form-control" id="specialty" v-model="specialty">
-      <option>Landscape</option>
-      <option>Portrait</option>
-      <option>Wildlife</option>
-      <option>Sports</option>
-      <option>Architectural</option>
-    </select>
-  </div>
-  <div class="form-group">
-          <label for="country">Country</label>
-          <select id="country" v-model="country">
-            <option value="usa">Saudi Arabia</option>
-            <option value="india">USA</option>
-            <option value="uk">UK</option>
-            <option value="germany">Germany</option>
-          </select>
-        </div>
-  <div class="form-group">
-    <label for="BrieStatement">Give us brief statement about you</label>
-    <textarea class="form-control" id="BriefStatement" rows="3" v-model="BriefStatement" ></textarea>
-  </div>
-  
-  <div class="form-group">
-    <label for="images">Upload best images you have!</label>
-    <input type="file" class="form-control-file" id="image">
-  </div>
-     <div class="input inline">
-          <input type="checkbox" id="terms" v-model="terms">
-          <label for="terms">Accept Terms of Use</label>
-        </div>
-        <div class="submit">
-          <button type="submit">Submit</button>
-        </div>
-</form>
-    -->
-        <!--<div class="signup-form">
-      <form @submit.prevent="onSubmit">
-        <div class="input">
-          <label for="email">Mail</label>
-          <input
-                  type="email"
-                  id="email"
-                  v-model="email">
-        </div>
-        <div class="input">
-          <label for="age">Your profosional</label>
-          <input
-                  type="text"
-                  id="age"
-                  v-model.number="age">
-        </div>
-        <div class="input">
-          <label for="password">Password</label>
-          <input
-                  type="password"
-                  id="password"
-                  v-model="password">
-        </div>
-        <div class="input">
-          <label for="confirm-password">Confirm Password</label>
-          <input
-                  type="password"
-                  id="confirm-password"
-                  v-model="confirmPassword">
-        </div>
-        <div class="input">
-          <label for="country">Country</label>
-          <select id="country" v-model="country">
-            <option value="usa">USA</option>
-            <option value="india">India</option>
-            <option value="uk">UK</option>
-            <option value="germany">Germany</option>
-          </select>
-        </div>
-     
-        <div class="input inline">
-          <input type="checkbox" id="terms" v-model="terms">
-          <label for="terms">Accept Terms of Use</label>
-        </div>
-        <div class="submit">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>-->
-
 
     </section>
 </template>
 
 <script>
-    import axios from "axios"
+    import firebase from 'firebase'
+    import axios from 'axios'
     export default {
         data() {
             return {
@@ -162,28 +125,205 @@
                 email: '',
                 specialty: '',
                 country: '',
+                phone: null,
                 BriefStatement: '',
+                UserImage: null,
+                UserPictureUrl: null,
+
+                UserArts: [],
+                UserArtsUrl: [],
 
             }
         },
         methods: {
 
+            previewYourImage(event) {
+                this.UserPictureUrl = null;
+                this.UserImage = event.target.files[0];
+              
+        
 
-            onSubmit() {
-                const formData = {
+
+            },
+            previewImages(event) {
+                this.UserArtsUrl = [];
+                   
+ 
+           
+              var key;
+                for(key in event.target.files) {
+                  
+                  
+                    if(typeof event.target.files[key] == 'object'){
+                       this.UserArts.push(event.target.files[key]);
+                  }}
+                    
+            },
+            onUpload() {
+                this.UserPictureUrl = null;
+                this.UserArtsUrl = [];
+                
+      
+                
+                 const storageRef=firebase.storage().ref(`${this.UserImage.name}`).put(this.UserImage);
+      storageRef.on(`state_changed`,snapshot=>{
+        this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+      }, error=>{console.log(error.message)},
+      ()=>{this.uploadValue=100;
+        storageRef.snapshot.ref.getDownloadURL().then((url)=>{
+             
+     this.UserPictureUrl = url;
+                            
+  
+
+                     
+            
+
+          
+            function asyncAction(v) {
+   return  new Promise((resolve, reject) => {
+       var key;
+                
+     for (key in v.UserArts) {
+                   // console.log(this.UserArts[key]);
+                    const storageRef1 = firebase.storage().ref(`${v.UserArts[key].name}`).put(v.UserArts[key]);
+                    storageRef1.on(`state_changed`,snapshot=>{
+      },error => {
+                            console.log(error.message)
+                        },
+                        () => {
+
+                            storageRef1.snapshot.ref.getDownloadURL().then((url) => {
+                                v.UserArtsUrl.push(url);
+                                console.log("there ",v.UserArtsUrl);
+                            });
+                        }
+                    );
+                }
+       resolve();
+  });
+ 
+}
+        
+   /* function   asyncAction( ()=>{
+  
+       var key;
+                
+     for (key in v.UserArts) {
+                   // console.log(this.UserArts[key]);
+                    const storageRef1 = firebase.storage().ref(`${v.UserArts[key].name}`).put(v.UserArts[key]);
+                    storageRef1.on(`state_changed`,snapshot=>{
+      },error => {
+                            console.log(error.message)
+                        },
+                        () => {
+
+                            storageRef1.snapshot.ref.getDownloadURL().then((url) => {
+                                v.UserArtsUrl.push(url);
+                                console.log("there ",v.UserArtsUrl);
+                            });
+                        }
+                    );
+                }
+            
+        data( function(){
+          const formData = {
                     email: this.email,
                     specialty: this.specialty,
                     name: this.name,
                     BriefStatement: this.BriefStatement,
                     country: this.country,
+                    phone: this.phone,
+                    userPic: this.UserPictureUrl,
+               userArts:this.UserArts
                 }
-                console.log(formData)
-                axios.post('https://photographs-8aa73.firebaseio.com/user.json', formData)
-                    .then(res => console.log(res))
-                    .catch(error => console.log(error))
-                /*  this.$store.dispatch('sginUp',formData)*/
+           
+                                  firebase.database().ref(`users/${formData.name}`).set(formData); 
+                    console.log(formData.userArts);
+                                 
+             
+        });
+  }*/
+ 
+
+      
+            
+           
+                asyncAction(this).then(()=>{
+                    
+           const formData = {
+                    email: this.email,
+                    specialty: this.specialty,
+                    name: this.name,
+                    BriefStatement: this.BriefStatement,
+                    country: this.country,
+                    phone: this.phone,
+                    userPic: this.UserPictureUrl,
+               userArts:this.UserArts
+                }
+           
+                                  firebase.database().ref(`users/${formData.name}`).set(formData); 
+                    console.log(formData.userArts);
+                                 
+            },error => {
+                            console.log(error.message)
+                        });
+            
+                  
+                
+            
+        
+            
+            
+            
+            
+            
+        });
+      }
+      );
+              
+                    
+     
+
             }
+        
         }
+            
     }
+                             
+                              
+    
 
 </script>
+
+
+<style scoped="">
+    img.preview {
+        width: 200px;
+    }
+
+    .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+
+    }
+
+    input[type="file"] {
+        display: none;
+
+    }
+
+    .custom-file-input::-webkit-file-upload-text {
+        visibility: hidden;
+
+
+    }
+
+    .custom-file-input::before {
+        visibility: visible;
+        content: 'Upload Your Image';
+        -webkit-user-select: none;
+        cursor: pointer;
+
+    }
+
+</style>

@@ -15,7 +15,7 @@ const routes = [
   { path: '/', component:WelcomePage},
   { path: '/photographers', component: Photographers },
   { path: '/signup', component: SignupPage },
-  { path: '/dashboard', component: DashboardPage }
+  { path: '/about', component: About }
 ]
 
 export default new VueRouter({mode: 'history', routes})

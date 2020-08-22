@@ -1,11 +1,11 @@
 <template>
   <div>
+
 <section id="home" class="parallax-section">
      <div class="overlay"></div>
      <div class="container">
           <div class="row">
-
-               <div class="col-md-10 col-sm-12">
+  <div class="col-md-10 col-sm-12">
                     <div class="home-text">
                          <h1>Your Website has a video background!</h1>
                        
@@ -24,6 +24,7 @@
           Your browser does not support the video tag.
      </video>
 </section>
+
 <app-photographers> </app-photographers>
   </div>
 </template>
