@@ -106,6 +106,7 @@
                 </div>
 
             </div>
+            
         </div>
 
 
@@ -185,7 +186,7 @@
        var key;
                 
      for (key in v.UserArts) {
-                   // console.log(this.UserArts[key]);
+                  
                     const storageRef1 = firebase.storage().ref(`${v.UserArts[key].name}`).put(v.UserArts[key]);
                     storageRef1.on(`state_changed`,snapshot=>{
       },error => {
@@ -259,11 +260,11 @@
                     country: this.country,
                     phone: this.phone,
                     userPic: this.UserPictureUrl,
-               userArts:this.UserArts
+               userArts:this.UserArtsUrl
                 }
            
                                   firebase.database().ref(`users/${formData.name}`).set(formData); 
-                    console.log(formData.userArts);
+                    console.log("hy",formData.userArts);
                                  
             },error => {
                             console.log(error.message)

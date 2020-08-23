@@ -7,8 +7,9 @@
           <div class="row">
   <div class="col-md-10 col-sm-12">
                     <div class="home-text">
-                         <h1>Your Website has a video background!</h1>
-                       
+                         <h1>Welcome to Photographers Gallery!</h1>
+                       <p>Fotofever is your number one pick when in search of the best photographer ever
+</p>
                          <ul class="section-btn">
                               <a href="#about" class="smoothScroll"><span data-hover="Discover More">Join Us Now!!</span></a>
                          </ul>

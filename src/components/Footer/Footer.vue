@@ -4,8 +4,8 @@
           <div class="row">
 
                <div class="col-md-5 col-sm-6">
-                    <h2>Digital Studio</h2>
-                    <p>321 Donec et justo id risus, Malesuada pharetra,<br> Tristique vestibulum,<br> Lorem ipsum dolor</p>
+                    <h2>Fotover</h2>
+                    <p>Fotofever is your number one pick when in search of the best photographer ever</p>
                     
                     
                </div>
@@ -14,7 +14,7 @@
                     <div class="footer-info">
                     	<h2>Keep in touch</h2>
                          <p><a href="tel:010-090-0780">010-090-0780</a></p>
-                         <p><a href="mailto:info@company.com">info@company.com</a></p>
+                         <p><a href="mailto:info@company.com">info@fotover.com</a></p>
                          <p><a href="#">Our Location</a></p>
                     </div>
                </div>
@@ -22,7 +22,7 @@
                <div class="col-md-3 col-sm-12">
                		
                     <h2>About Us</h2>
-                    <p>Sed vestibulum posuere ante, eget blandit metus. Morbi sodales feugiat erat, et placerat sapien suscipit ut.</p>
+                    <p>Online Website to search about photographers where photographers post their photo shoot in an easy and quick way. </p>
                     <ul class="social-icon">
                          <li><a href="#" class="fa fa-twitter"></a></li>
                          <li><a href="#" class="fa fa-facebook"></a></li>
@@ -36,7 +36,7 @@
 
                <div class="col-md-12 col-sm-12">
                     <div class="copyright-text">
-                         <p>Copyright © 2018 Company Name 
+                         <p>Copyright © 2018 Fotover 
                          
                          | Design: Tooplate</p>
                     </div>
@@ -62,9 +62,7 @@
           email: this.email,
           password: this.password,
         }   
-        console.log(formData)
-           this.$store.dispatch('login',formData)
-     
+        
            
       }
     }

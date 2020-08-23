@@ -12,9 +12,12 @@
     "axios": "^0.17.1",
     "firebase": "^7.18.0",
     "firebaseui": "^4.6.1",
+    "owl.carousel": "^2.3.4",
     "vue": "^2.4.4",
     "vue-axios": "^2.1.5",
+    "vue-owl-carousel": "^2.0.3",
     "vue-router": "^3.0.1",
+    "vueperslides": "^2.10.3",
     "vuex": "^3.0.0"
   },
   "devDependencies": {
