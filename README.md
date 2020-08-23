@@ -1,6 +1,13 @@
 # Fotofever.com!!
 
+### Prerequisites
 
+Node.js
+
+### Installing
+
+* Download and install node
+* Clone repository
 
 ## Build Setup
 
